@@ -14,3 +14,7 @@ This format reflects [RFC3164](http://www.ietf.org/rfc/rfc3164.txt).
 You can see a list of CLI args and descriptions with --help:
 
 `pylogger.py --help`
+
+## To Do
+* Add UDP or TCP option. Currently only sends TCP messages.
+* Rewrite of priority code to better match syslog priorities.
