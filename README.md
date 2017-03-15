@@ -20,3 +20,11 @@ You can see a list of CLI args and descriptions with --help:
 
 ## To Do
 * Rewrite of priority code to better match syslog priorities.
+
+## Why?
+Versions of the *nix ‘logger’ command prior to 2.26 did not send well-formed messages
+and the latest version available for CentOS 7/RHEL 7 is 2.23. I wrote pylogger at
+a time when I couldn't wait for the upstream version of 'logger' to make it into
+CentOS/RHEL.
+
+Ubuntu 16.04 has v. 2.27 so no problem there.
