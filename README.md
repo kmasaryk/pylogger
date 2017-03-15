@@ -1,6 +1,9 @@
 # pylogger
 CLI command to generate and send well-formed syslog messages to a syslog receiver.
-Follows arg names as found in the *nix 'logger' command.
+Follows most arg names as found in the *nix 'logger' command.
+
+Messages are sent using TCP by default. The '--udp' option can be used to switch
+to UDP instead.
 
 ## Message format
 `<PRI>TIMESTAMP HOSTNAME TAG: MESSAGE`
@@ -16,5 +19,4 @@ You can see a list of CLI args and descriptions with --help:
 `pylogger.py --help`
 
 ## To Do
-* Add UDP or TCP option. Currently only sends TCP messages.
 * Rewrite of priority code to better match syslog priorities.

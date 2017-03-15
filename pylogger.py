@@ -19,9 +19,6 @@ import getpass
 parser = argparse.ArgumentParser(__file__,
                                  description="Send a syslog formatted message to a syslog receiver")
 
-# TODO #
-# Need to add udp and tcp options
-
 parser.add_argument("--server",
                     "-n",
                     default="localhost",
@@ -32,6 +29,11 @@ parser.add_argument("--port",
                     type=int,
                     default=514,
                     help="Use this port for UDP or TCP connection")
+
+parser.add_argument("--udp",
+                    "-u",
+                    action='store_true',
+                    help="Generate UDP packets instead of TCP.")
 
 parser.add_argument("--priority",
                     "-p",
@@ -80,8 +82,13 @@ syslogger = logging.getLogger('SyslogLogger')
 pri = string_to_level(args.priority)
 syslogger.setLevel(pri)
 
+if args.udp:
+    transport=socket.SOCK_DGRAM
+else:
+    transport=socket.SOCK_STREAM
+
 handler = logging.handlers.SysLogHandler(address=(args.server, args.port),
-                                         facility=19, socktype=socket.SOCK_STREAM)
+                                         facility=19, socktype=transport)
 handler.setFormatter(msg_fmt)
 syslogger.addHandler(handler)
 
